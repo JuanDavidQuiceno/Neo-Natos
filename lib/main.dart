@@ -61,7 +61,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Alcadía Infinity',
+      title: 'NeoNatos',
       debugShowCheckedModeBanner: false,
       initialRoute: SplashScreen.routeName,
       home: const SplashScreen(),
