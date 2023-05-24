@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:logger/logger.dart';
 import 'package:url_strategy/url_strategy.dart';
@@ -15,10 +14,6 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = ObserverBloc();
   setUpGlobalLocator();
-  // await LocalStorage.configurePrefs();
-  // await FirebaseService.initializeApp();
-  // await LocalNotificationServices().initNotification();
-  // await dotenv.load(fileName: Environment.fileName);
   setPathUrlStrategy();
   runApp(const MyApp());
 }
