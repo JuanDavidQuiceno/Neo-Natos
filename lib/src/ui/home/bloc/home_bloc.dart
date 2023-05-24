@@ -45,23 +45,22 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   FutureOr<void> _calculeState(CalculateEvent event, Emitter<HomeState> emit) {
     emit(HomeInitialState());
     print(event.peso);
+    double result;
     if (selectMedicine.type == Medicine.Ampicilina) {
-      double result = (event.peso * 25 * 5) / 500;
-      emit(CalculateState(
-        'La dosis de ${selectMedicine.description} es: *${result.toStringAsFixed(2)}* *ml*',
-      ));
+      result = (event.peso * 25 * 5) / 500;
     } else if (selectMedicine.type == Medicine.SurfactantePulmonar) {
-      double result = (event.peso * 200) / 25;
-      final String resultString = result.toStringAsFixed(2);
-      if (resultString.endsWith('00')) {
-        emit(CalculateState(
-            'La dosis de ${selectMedicine.description} es: *${result.toStringAsFixed(0)}ml*'));
-      } else {
-        emit(CalculateState(
-            'La dosis de ${selectMedicine.description} es: *${result.toStringAsFixed(2)}ml*'));
-      }
+      result = (event.peso * 200) / 25;
     } else {
-      emit(HomeErrorState());
+      result = 0;
+    }
+
+    final String resultString = result.toStringAsFixed(2);
+    if (resultString.endsWith('00')) {
+      emit(CalculateState(
+          'La dosis de ${selectMedicine.description} es: *${result.toStringAsFixed(0)}ml*'));
+    } else {
+      emit(CalculateState(
+          'La dosis de ${selectMedicine.description} es: *${result.toStringAsFixed(2)}ml*'));
     }
   }
 
